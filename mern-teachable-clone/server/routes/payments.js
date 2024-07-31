@@ -1,13 +1,29 @@
-// routes/payments.js
+// server/routes/payment.js
 const express = require('express');
-const { makePayment ,getPayments} = require('../Controller/paymentController');
+const { handlePayment, getUserCourses } = require('../controllers/PaymentController');
 const router = express.Router();
 
-router.post('/', makePayment);
-router.get('/',  getPayments);
-
+router.post('/purchase', handlePayment);
+router.get('/user-courses/:userId', getUserCourses);
 
 module.exports = router;
+
+
+
+
+
+
+
+// // routes/payments.js
+// const express = require('express');
+// const { makePayment ,getPayments} = require('../Controller/paymentController');
+// const router = express.Router();
+
+// router.post('/', makePayment);
+// router.get('/',  getPayments);
+
+
+// module.exports = router;
 
 
 
