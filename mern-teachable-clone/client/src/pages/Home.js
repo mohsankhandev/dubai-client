@@ -23,11 +23,11 @@ const Home = () => {
       <FeaturesSection />
       <Feactureb />
       <Feacturec />
-      <Feactured />
-      <FAQSection />
-      <RefundPolicySection />
-      <BecomeATeacherSection />
-      <Chat />
+      {/* <Feactured /> */}
+      {/* <FAQSection /> */}
+      {/* <RefundPolicySection /> */}
+      {/* <BecomeATeacherSection /> */}
+      {/* <Chat /> */}
       <Footer />
 
       {/* <CoursePage /> */}

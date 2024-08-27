@@ -1,6 +1,21 @@
 
 
-import React, { useState } from 'react';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState ,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Sample data for different categories
@@ -39,8 +54,12 @@ const data = {
 
 const ProductComponent = () => {
   const { category } = useParams();
-  console.log(category)
   const [selectedCategory, setSelectedCategory] = useState(category || 'arabic');
+
+   // Update selectedCategory when the URL parameter changes
+   useEffect(() => {
+    setSelectedCategory(category);
+  }, [category]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -53,13 +72,13 @@ const ProductComponent = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-[96px]">
       {/* Navigation Menu */}
-      <div className="flex flex-col md:flex-row items-center justify-center mb-6 bg-black" style={{ height: '200px' }}>
+      <div className="flex flex-col md:flex-row items-center justify-center mb-6 bg-gray-800" style={{ height: '200px' }}>
         <ul className="flex flex-wrap justify-center w-full space-x-2 md:space-x-6 mt-auto">
           <li className="flex-1 text-center">
             <button
-              className={`w-full py-2 px-4 md:py-3 md:px-6 rounded ${selectedCategory === 'arabic' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'} hover:bg-red-600 text-sm md:text-base`}
+              className={`w-full py-2 px-4 md:py-3 md:px-6 rounded ${selectedCategory === 'arabic' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-800'} hover:bg-blue-500 text-sm md:text-base`}
               onClick={() => handleCategoryChange('arabic')}
             >
               Arabic Coffee
@@ -67,7 +86,7 @@ const ProductComponent = () => {
           </li>
           <li className="flex-1 text-center">
             <button
-              className={`w-full py-2 px-4 md:py-3 md:px-6 rounded ${selectedCategory === 'asian' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'} hover:bg-red-600 text-sm md:text-base`}
+              className={`w-full py-2 px-4 md:py-3 md:px-6 rounded ${selectedCategory === 'asian' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-800'} hover:bg-blue-500 text-sm md:text-base`}
               onClick={() => handleCategoryChange('asian')}
             >
               Asian Coffee
@@ -75,7 +94,7 @@ const ProductComponent = () => {
           </li>
           <li className="flex-1 text-center">
             <button
-              className={`w-full py-2 px-4 md:py-3 md:px-6 rounded ${selectedCategory === 'other' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'} hover:bg-red-600 text-sm md:text-base`}
+              className={`w-full py-2 px-4 md:py-3 md:px-6 rounded ${selectedCategory === 'other' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-800'} hover:bg-blue-500 text-sm md:text-base`}
               onClick={() => handleCategoryChange('other')}
             >
               Other Coffee
@@ -85,8 +104,8 @@ const ProductComponent = () => {
       </div>
 
       {/* Heading and Description */}
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-2">{heading}</h2>
+      <div className="text-center mb-8 mt-9">
+        <h2 className="text-3xl font-bold mb-2 text-gray-800">{heading}</h2>
         <p className="text-gray-600">{description}</p>
       </div>
 
@@ -94,17 +113,17 @@ const ProductComponent = () => {
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {products.length > 0 ? (
           products.map((product) => (
-            <a key={product.id} href="#" className="relative block border border-gray-300 rounded overflow-hidden group">
+            <a key={product.id} href="#" className="relative block border border-gray-200 rounded overflow-hidden group">
               <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
               <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <h3 className="text-white text-lg font-semibold mb-1">{product.name}</h3>
                 <p className="text-white text-md mb-2">{product.price}</p>
-                <button className="bg-red-500 text-white py-1 px-4 rounded">View Details</button>
+                <button className="bg-blue-600 text-white py-1 px-4 rounded">View Details</button>
               </div>
               <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold">{product.name}</h3>
+                <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
                 <p className="text-gray-600">{product.price}</p>
-                <button className="mt-2 bg-red-500 text-white py-1 px-4 rounded ">View Details</button>
+                <button className="mt-2 bg-blue-500 text-white py-1 px-4 rounded">View Details</button>
               </div>
             </a>
           ))
@@ -129,9 +148,27 @@ export default ProductComponent;
 
 
 
-// import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
 
 // // Sample data for different categories
 // const data = {
@@ -168,8 +205,6 @@ export default ProductComponent;
 // };
 
 // const ProductComponent = () => {
-//   const { category } = useParams();
-
 //   const [selectedCategory, setSelectedCategory] = useState('arabic');
 
 //   const handleCategoryChange = (category) => {
@@ -301,40 +336,6 @@ export default ProductComponent;
 // };
 
 // export default ProductComponent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

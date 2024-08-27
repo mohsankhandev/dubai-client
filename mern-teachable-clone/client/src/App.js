@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
@@ -14,14 +14,28 @@ import AdminRoute from './pages/Admin/AdminRoute';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import ManageUsers from './pages/Admin/ManageUser';
 import ManageCourses from './pages/Admin/ManageCourses';
+import Coffee from './components/Coffee';
+import ContactUs from './components/Contactus';
+import EventsSection from './components/EventsSection';
+import About from './components/About';
+import ProductDetails from './components/ProductDetails';
 
 
 const App = () => {
+  // const [activeSection, setActiveSection] = useState(0); // State to track active section
+
   return (
     <Router>
-      <Navbar />
+      <Navbar  />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/coffee" element={<Coffee />} />
+        <Route path="/coffee/:category" element={<Coffee />} />
+        <Route path="/productdetails" element={<ProductDetails />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/eventsection" element={<EventsSection />} />
+        <Route path="/courses/submenu3" element={<About  />} />
+
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/users" element={<ManageUsers />} />
         <Route path="/admin/courses" element={<ManageCourses />} />
